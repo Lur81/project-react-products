@@ -1,0 +1,139 @@
+
+/* .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+   */
+  .modal {
+    background-color:#eedfe998;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    width: 50vw;
+  }
+  
+  .modal-header {
+    
+    background-color: #5e0d766b;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .modal-header h4 {
+    position: relative;
+    left: 32%;
+    color: #5d0d76;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    height: 70px;
+    width: 70px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .close-button:hover {
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2); 
+  
+  }
+  
+  .close-button img {
+    width: 100%;
+  }
+  
+  .comments-list {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+  }
+
+  .comments-list::-webkit-scrollbar {
+    width: 4px;
+    background-color: #5d0d76;
+  }
+
+  .comments-list::-webkit-scrollbar-thumb {
+    width: 4px;
+    background-color:#eedfe998;
+    background-clip:border-box;
+  }
+  
+  .comment {
+    border-bottom: 2px solid #5d0d76;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 45vw;
+    text-align: center;
+   
+  
+  }
+  
+  .comment p {
+    color: #644d3f;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .addcomment-button {
+    background-color: #5d0d76;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    width: 45vw;
+  }
+  
+  .addcomment-button:hover {
+    background-color: #452456;
+  }
+
+  .addcomment-input {
+   border-color: #5d0d76;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 30px 20px;
+    margin-bottom: 10px;;
+    width: 43vw;
+  
+  }
+
+  .addcomment-form {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+  .addcomment-label {
+    color: rgba(214, 79, 171, 0.809);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

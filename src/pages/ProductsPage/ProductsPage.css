@@ -1,0 +1,15 @@
+.position{
+    position: relative;
+    top:10%;
+    left: 25%;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    
+  }
+
+  .Page{
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+  }
