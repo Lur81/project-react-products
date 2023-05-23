@@ -9,7 +9,7 @@ export const Products = ({ product, deleteProduct, addProduct, editProduct, open
     const { user } = useContext(ProductsContext);
     return (
 
-        <div >
+        <div className='page'>
             <h1>PRODUCTOS</h1>
             <div className='container'>
                 {product.map((item) => (
