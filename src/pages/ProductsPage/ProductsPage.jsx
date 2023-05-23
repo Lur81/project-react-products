@@ -44,121 +44,120 @@ export const ProductsPage = () => {
     const [user, setUser] = useState("Clients")
     const backgroundStyle = {
         backgroundImage: user==="Clients" ? `url(${bckground})` : `url(${bckgroundBW})`,
-        backgroundSize: 'cover',
-        height: '100vh'
+        height: '100%',
+        width: '100vw',
+        objectFit:'cover'
       };
 
 
     //FUNCION EDITAR
 
     const editProduct = (index) => {
-        const editProductsList = [...products];
-        let newName = prompt("Introduce nombre de producto:");
-        let newAmount = prompt("Introduce cantidad de producto:");
-      
-        while (isNaN(newAmount)) {
-          alert("Error: La cantidad ingresada no es un número válido.");
-          newAmount = prompt("Introduce cantidad de producto:");
-        }
-      
-        editProductsList.find((editpro) => editpro.id === index).name =
-          newName ? newName : editProductsList.find((editpro) => editpro.id === index).name;
-        editProductsList.find((editpro) => editpro.id === index).amount = parseFloat(newAmount);
-        setProducts(editProductsList);
-        console.log(editProductsList);
-        console.log(products);
-      };
+      const editProductsList = [...products];
+      let newName = prompt("Introduce nombre de producto:");
+      let newAmount = prompt("Introduce cantidad de producto:");
+    
+      while (isNaN(newAmount)) {
+        alert("Error: La cantidad ingresada no es un número válido.");
+        newAmount = prompt("Introduce cantidad de producto:");
+      }
+    
+      editProductsList.find((editpro) => editpro.id === index).name =
+        newName ? newName : editProductsList.find((editpro) => editpro.id === index).name;
+      editProductsList.find((editpro) => editpro.id === index).amount = parseFloat(newAmount);
+      setProducts(editProductsList);
+      console.log(editProductsList);
+      console.log(products);
+    };
 
-    //FUNCION AÑADIR
-    const addProduct = () => {
-        let productName;
-        productName = prompt("Introduce nombre de producto:");
-        let productAmount;
-        productAmount = prompt("Introduce cantidad de producto:")
-        const newProduct = {
-            id: nextId,
-            name: productName,
-            amount: productAmount
-        }
+  //FUNCION AÑADIR
+  const addProduct = () => {
+      let productName;
+      productName = prompt("Introduce nombre de producto:");
+      let productAmount;
+      productAmount = prompt("Introduce cantidad de producto:")
+      const newProduct = {
+          id: nextId,
+          name: productName,
+          amount: productAmount
+      }
 
-        products.push(newProduct)
-        setProducts(products);
-        setNextId(nextId + 1);
+      products.push(newProduct)
+      setProducts(products);
+      setNextId(nextId + 1);
 
-    }
-    //FUNCION BORRAR
-    const deleteProduct = (index) => {
-        const deleteProductsList = products.filter((item) => {
-            return index !== item.id;
-        });
-        setProducts(deleteProductsList);
-    }
+  }
+  //FUNCION BORRAR
+  const deleteProduct = (index) => {
+      const deleteProductsList = products.filter((item) => {
+          return index !== item.id;
+      });
+      setProducts(deleteProductsList);
+  }
 
-    //AÑADIR COMENTARIOS 
-    const addComment = (comment) => {
-        const newComment = comment.trim();
-        const updatedProducts = products.map((product) => {
-          if (product.id === productComment) {
-            if (user === "Clients") {
-              return {
-                ...product,
-                clientsComments: newComment !== "" ? [...product.clientsComments, newComment] : product.clientsComments
-              };
-            } else {
-              return {
-                ...product,
-                providerComments: newComment !== "" ? [...product.providerComments, newComment] : product.providerComments
-              };
-            }
+  //AÑADIR COMENTARIOS 
+  const addComment = (comment) => {
+      const newComment = comment.trim();
+      const updatedProducts = products.map((product) => {
+        if (product.id === productComment) {
+          if (user === "Clients") {
+            return {
+              ...product,
+              clientsComments: newComment !== "" ? [...product.clientsComments, newComment] : product.clientsComments
+            };
+          } else {
+            return {
+              ...product,
+              providerComments: newComment !== "" ? [...product.providerComments, newComment] : product.providerComments
+            };
           }
-          return product;
-        });
-        setProducts(updatedProducts);
-      };
-
-    //ABRIR MODAL
-    const openModal = (productID) => {
-        setproductComment(productID);
-        setOpen(true);
-
+        }
+        return product;
+      });
+      setProducts(updatedProducts);
     };
 
-    //CERRAR MODAL
-    const closeModal = () => {
-        setproductComment(null);
-        setOpen(false);
+  //ABRIR MODAL
+  const openModal = (productID) => {
+      setproductComment(productID);
+      setOpen(true);
 
-    };
+  };
 
-    return (
-        <div className='Page' style={backgroundStyle}>
-        <ProductsContext.Provider value={{user, setUser}}>
-                <Header></Header>
-                <Products
-                    editProduct={editProduct}
-                    addProduct={addProduct}
-                    deleteProduct={deleteProduct}
-                    product={products}
-                    openModal={openModal}
+  //CERRAR MODAL
+  const closeModal = () => {
+      setproductComment(null);
+      setOpen(false);
 
-                >
-                </Products>
+  };
 
-                <ReactModal className='position' ReactModal isOpen={open}>
-                    <Comments
-                    
-                        addComment={addComment}
-                        closeModal={closeModal}
-                        product={products}
-                        productComment={productComment}
-                    >
-                    </Comments>
-                </ReactModal>
-                </ProductsContext.Provider>
-        </div>
+  return (
+      <div className='pages'  style={backgroundStyle}>
+      <ProductsContext.Provider value={{user, setUser}}>
+              <Header></Header>
+              <Products
+                  editProduct={editProduct}
+                  addProduct={addProduct}
+                  deleteProduct={deleteProduct}
+                  product={products}
+                  openModal={openModal}
+
+              >
+              </Products>
+
+              <ReactModal className='position' ReactModal isOpen={open}>
+                  <Comments
+                  
+                      addComment={addComment}
+                      closeModal={closeModal}
+                      product={products}
+                      productComment={productComment}
+                  >
+                  </Comments>
+              </ReactModal>
+              </ProductsContext.Provider>
+      </div>
 
 
-    )
+  )
 }
-
-

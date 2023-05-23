@@ -8,8 +8,10 @@
     
   }
 
-  .Page{
+  .pages{
+      object-fit: cover;
       height: 100vh;
       margin: 0;
       padding: 0;
+      background-color: transparent;
   }
