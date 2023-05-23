@@ -45,8 +45,9 @@ export const ProductsPage = () => {
     const backgroundStyle = {
         backgroundImage: user==="Clients" ? `url(${bckground})` : `url(${bckgroundBW})`,
         height: '100%',
-        width: '100vw',
-        objectFit:'cover'
+        width: '100%',
+        backgroundSize:'cover'
+
       };
 
 
@@ -132,7 +133,8 @@ export const ProductsPage = () => {
   };
 
   return (
-      <div className='pages'  style={backgroundStyle}>
+    
+      <div className='pages' style={backgroundStyle}>
       <ProductsContext.Provider value={{user, setUser}}>
               <Header></Header>
               <Products
